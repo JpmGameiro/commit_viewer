@@ -1,7 +1,7 @@
 const shell = require('shelljs')
 const cacheService = require('./cacheService')
 
-function invokeShell(githubUrl, projectName, updateCommitHistory) {
+function invokeShell(githubUrl, projectName) {
 
     if(shell.exec(`git clone ${githubUrl}`).code !== 0) {
         console.log('Something went wrong while cloning...')
@@ -22,4 +22,4 @@ function invokeShell(githubUrl, projectName, updateCommitHistory) {
 
 }
 
-module.exports = invokeShell
+module.exports.invokeShell = invokeShell

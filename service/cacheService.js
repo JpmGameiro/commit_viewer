@@ -1,4 +1,5 @@
-const cache = require('../cache/cache')
+const Cache = require('../cache/cache')
+const cache = new Cache()
 
 function get(key) {
     return cache.get(key)
