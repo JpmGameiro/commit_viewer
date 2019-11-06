@@ -1,0 +1,8 @@
+function Commit(hash, author, date, message) {
+    this.hash = hash
+    this.author = author
+    this.date = date
+    this.message = message
+}
+
+module.exports = Commit
