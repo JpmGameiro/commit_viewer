@@ -6,7 +6,7 @@ function verifyCommands(args) {
     const projectName = args[2].split('/')[4]
 
     if((args.lenght > 3 && args[3] === 'true') || !cacheService.has(githubUrl)) {
-        shellService.invokeShell(githubUrl, projectName)
+        //shellService.invokeShell(githubUrl, projectName)
     } else {
         cacheService.get(githubUrl)
     }
