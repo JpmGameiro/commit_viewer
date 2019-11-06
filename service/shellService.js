@@ -7,19 +7,26 @@ function clone(githubUrl) {
     }
 }
 
+function pull() {
+    if(shell.exec('git pull').code !== 0) {
+        console.log('Something went wrong while attempting to pull...')
+        shell.exit(1)
+    }
+}
+
 function cd(projectName) {
     shell.cd(projectName)
 }
 
-function gitLog() {
+function gitLog(cb) {
     shell.exec('git log', function(code, stdout, stderr) {
         if(code !== 0) {
             console.log('Something went wrong while logging commit history')
             shell.exit(1)
         } else {
-            //cacheService.set(githubUrl, stdout)
+            cb(stdout)
         }
     })
 }
 
-module.exports.invokeShell = invokeShell
+module.exports = {clone, pull, cd, gitLog}
