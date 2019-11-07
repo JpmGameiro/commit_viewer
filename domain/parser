@@ -1,0 +1,11 @@
+const Commit = require('./model/Commit')
+const Mapper = require('./mapper')
+
+function parseToJson(stdout) {
+    let commits = stdout.split('\n')
+    commits.pop()
+    let newList = `[${commits.join(',')}]`
+    return JSON.parse(newList).map(commit => Mapper.MapToCommit(commit))
+}
+
+module.exports.parseToJson = parseToJson
