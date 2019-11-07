@@ -4,6 +4,7 @@ function MapToCommit(json) {
     return new Commit(
         json.hash,
         json.author,
+        json.author_email,
         json.date,
         json.message
     )

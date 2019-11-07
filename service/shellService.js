@@ -19,7 +19,9 @@ function cd(projectName) {
 }
 
 function gitLog(cb) {
-    shell.exec('git log', function(code, stdout, stderr) {
+    const properties = '{\\"hash\\":\\"%H\\",\\"author\\":\\"%aN\\",\\"author_email\\":\\"<%aE>\\",\\"date\\":\\"%ad\\",\\"message\\":\\"%f\\"}'
+    const logCommand = 'git log --pretty=' + properties
+    shell.exec(logCommand, function(code, stdout, stderr) {
         if(code !== 0) {
             console.log('Something went wrong while logging commit history')
             shell.exit(1)
