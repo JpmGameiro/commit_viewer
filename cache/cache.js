@@ -1,21 +1,23 @@
-function Cache() {
-    this.cache = new Map()
-}
+class Cache {
 
-Cache.prototype.get = function (key) {
-    return this.cache.get(key)
-}
+    cache = new Map()
 
-Cache.prototype.set = function(key, value) {
-    this.cache.set(key, value)
-}
+    get(key) {
+        return this.cache.get(key)
+    }
 
-Cache.prototype.has = function(key) {
-    return !(this.cache.size === 0 || !this.cache.has(key))
-}
+    set(key, value) {
+        this.cache.set(key, value)
+    }
 
-Cache.prototype.count = function () {
-    return this.cache.size
+    has(key) {
+        return !(this.cache.size === 0 || !this.cache.has(key))
+    }
+
+    count () {
+        return this.cache.size
+    }
+
 }
 
 module.exports = Cache

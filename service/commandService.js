@@ -3,28 +3,37 @@ const cacheService = require('./cacheService')
 const mapper = require('../domain/mapper')
 const parser = require('../domain/parser')
 
-function verifyCommands(args) {
-    const githubUrl = args[2]
-    const projectName = args[2].split('/')[4]
+function validateArgs(args) {
 
-    if (!cacheService.has(githubUrl)) {
+    if (args.length < 3) {
+        console.error('Try again, Github URL was not given!!!');
+    } else {
+        delegateTasks(args)
+    }
+}
+
+function delegateTasks(args) {
+
+    const githubUrl = args[2]
+    const projectName = githubUrl.split('/')[4]
+    const updateCommitHistory = args[3]
+
+    if (!cacheService.hasCommitList(githubUrl)) {
         shellService.clone(githubUrl)
         shellService.cd(projectName)
         shellService.gitLog((stdout) => {
-            cacheService.set(githubUrl, mapper.MapToCommit(parser.parseToJson(stdout)))
-        } )
+            cacheService.saveCommitList(githubUrl, parser.parseToJson(stdout))
+        })
+        shellService.rmDir(`${process.cwd()}\\${projectName}`)
+    } else if (cacheService.hasCommitList(githubUrl) && (updateCommitHistory === undefined || updateCommitHistory === 'false')) {
+        console.log(cacheService.getCommitList(githubUrl))
     } else {
-        if((args.lenght > 3 && args[3] === 'true')) {
-            shellService.cd(projectName)
-            shellService.pull()
-            shellService.gitLog((stdout) => {
-                cacheService.set(githubUrl, mapper(JSON.parse(stdout)))
-            } )
-        } else {
-            cacheService.get(githubUrl)
-        }
+        shellService.cd(projectName)
+        shellService.pull()
+        shellService.gitLog((stdout) => {
+            cacheService.saveCommitList(githubUrl, parser.parseToJson(stdout))
+        })
     }
-
 }
 
-module.exports.verifyCommands = verifyCommands
+module.exports.validateArgs = validateArgs

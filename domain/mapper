@@ -1,6 +1,6 @@
 const Commit = require('./model/Commit')
 
-function MapToCommit(json) {
+function mapToCommit(json) {
     return new Commit(
         json.hash,
         json.author,
@@ -10,4 +10,4 @@ function MapToCommit(json) {
     )
 }
 
-module.exports.MapToCommit = MapToCommit
+module.exports.mapToCommit = mapToCommit
