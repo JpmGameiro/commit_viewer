@@ -32,11 +32,12 @@ function gitLog(cb) {
 }
 
 function rmDir(dir) {
-    if(shell.exec(`rmdir //Q //S ${dir}`).code !== 0) {
+    let x = dir
+    cd('..')
+    if(shell.exec(`rmdir /Q /S ${dir}`).code !== 0) {
         console.log('Something went wrong while deleting directory...')
         shell.exit(1)
     }
 }
-
 
 module.exports = {clone, pull, cd, gitLog, rmDir}

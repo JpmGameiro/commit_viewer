@@ -1,22 +1,21 @@
 const shellService = require('./shellService')
 const cacheService = require('./cacheService')
-const mapper = require('../domain/mapper')
+const main = require('../main')
 const parser = require('../domain/parser')
 
 function validateArgs(args) {
 
-    if (args.length < 3) {
-        console.error('Try again, Github URL was not given!!!');
-    } else {
+    /*if (args.length < 3) {
+        console.log('Try again, Github URL was not given!!!')
+    } else {*/
         delegateTasks(args)
-    }
+    //}
 }
 
 function delegateTasks(args) {
 
-    const githubUrl = args[2]
+    const githubUrl = args
     const projectName = githubUrl.split('/')[4]
-    const updateCommitHistory = args[3]
 
     if (!cacheService.hasCommitList(githubUrl)) {
         shellService.clone(githubUrl)
@@ -24,7 +23,8 @@ function delegateTasks(args) {
         shellService.gitLog((stdout) => {
             cacheService.saveCommitList(githubUrl, parser.parseToJson(stdout))
         })
-        shellService.rmDir(`${process.cwd()}\\${projectName}`)
+        shellService.rmDir(`${process.cwd()}`)
+        main.runApp()
     } else if (cacheService.hasCommitList(githubUrl) && (updateCommitHistory === undefined || updateCommitHistory === 'false')) {
         console.log(cacheService.getCommitList(githubUrl))
     } else {

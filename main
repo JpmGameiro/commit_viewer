@@ -1,0 +1,19 @@
+const commandService = require('./service/commandService')
+const readline = require('readline');
+
+function runApp() {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+    rl.on('line', (line) => {
+        commandService.validateArgs(line)
+    })
+
+    //'Provide us the GitHub URL and we\'ll do the rest for you! \n')
+    //console.log(`Getting ${url} Commit List...`)
+
+
+}
+
+module.exports.runApp = runApp
