@@ -5,17 +5,34 @@ const mapper = require('../domain/mapper')
 
 let axiosInstance
 
+/**
+ * Instanciation of axios
+ */
 function initializeAxios() {
     axiosInstance = axiosInstance !== undefined ? axiosInstance : axios.create({
         timeout: 10
     })
 }
 
+/**
+ * Gets the commit list, saves it in cache and prints it
+ * @param url
+ * @param owner
+ * @param repo
+ * @returns {Promise<void>}
+ */
 async function getCommitList(url, owner, repo){
     const data = (await retrieveCommitListFromAPI(owner, repo)).data
     cacheService.saveAndPrintCommitList(url, mapper.bulkMapToCommitFromAPI(data))
 }
 
+/**
+ * Retrieves the commit list from GitHub API,
+ * following provided owner and repo parameters
+ * @param owner
+ * @param repo
+ * @returns {Promise<*>}
+ */
 async function retrieveCommitListFromAPI(owner, repo) {
     initializeAxios()
     const githubAPI = 'https://api.github.com'

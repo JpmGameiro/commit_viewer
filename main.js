@@ -6,6 +6,9 @@ const rl = readline.createInterface({
     output: process.stdout
 })
 
+/**
+ * Listener for command line input
+ */
 function runApp() {
     rl.question('Provide us a valid GitHub Url or type -help...\n', async (args) => {
         await commandService.validateArgs(args)

@@ -2,6 +2,15 @@ const shellService = require('./shellService')
 const cacheService = require('./cacheService')
 const remoteService = require('./remoteService')
 
+/**
+ * Decides if a call to GitHub API must be done,
+ * or if it is just need to get the cached data
+ * @param url
+ * @param owner
+ * @param repo
+ * @param nocache
+ * @returns {Promise<void>}
+ */
 async function delegateTasks(url, owner, repo, nocache) {
 
     if (!cacheService.hasCommitList(url) || (cacheService.hasCommitList(url) && nocache === 'nocache')) {

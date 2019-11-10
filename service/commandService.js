@@ -1,5 +1,10 @@
 const delegateService = require('./delegateService')
 
+/**
+ * Validates whether the args are well formed or not
+ * @param args
+ * @returns {Promise<void>}
+ */
 async function validateArgs(args) {
 
     if(args === 'exit') {
@@ -20,6 +25,9 @@ async function validateArgs(args) {
     }
 }
 
+/**
+ * Lists the commands available
+ */
 function listCommands() {
     console.log(
         'List of commands available:\n' +
