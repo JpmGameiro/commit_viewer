@@ -35,4 +35,4 @@ function rmDir(dir) {
     }
 }
 
-module.exports = {clone, pull, cd, gitLog, rmDir}
+module.exports = {clone, cd, gitLog, rmDir}

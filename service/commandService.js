@@ -2,7 +2,6 @@ const shellService = require('./shellService')
 const cacheService = require('./cacheService')
 const remoteService = require('./remoteService')
 
-const main = require('../main')
 const parser = require('../domain/parser')
 const mapper = require('../domain/mapper')
 
@@ -18,21 +17,27 @@ async function delegateTasks(url, updateCache) {
 
     if (!cacheService.hasCommitList(url) || (cacheService.hasCommitList(url) && updateCache === 'true')) {
         try {
-            const commits = await remoteService.getCommitList(owner, projectName)
-            commits.forEach(elem => console.log(elem))
-            cacheService.saveCommitList(githubUrl, commits)
-
+            let commits = (await remoteService.getCommitList(owner, projectName)).data
+            let a = commits.map(elem => mapper.mapToCommit(
+                    elem.sha,
+                    elem.commit.author.name,
+                    elem.commit.author.email,
+                    elem.commit.author.date,
+                    elem.commit.message
+                ))
+            a.forEach(elem => console.log(elem))
+            cacheService.saveCommitList(url, a)
         } catch (e) {
             console.log('Error API')
-            shellService.clone(githubUrl)
+            shellService.clone(url)
             shellService.cd(projectName)
             const stdout = await shellService.gitLog()
-            cacheService.saveCommitList(githubUrl, parser.parseToJson(stdout))
+            cacheService.saveCommitList(url, parser.parseToJson(stdout))
             shellService.rmDir(`${process.cwd()}`)
             //todo passar troço para shellservice e print
         }
     } else {
-        cacheService.getCommitList(githubUrl).forEach(elem => console.log(elem))
+        cacheService.getCommitList(url).forEach(elem => console.log(elem))
     }
 }
 
