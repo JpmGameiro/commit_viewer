@@ -28,7 +28,7 @@ async function log(url, repo) {
         const stdout = await gitLog()
         cacheService.saveAndPrintCommitList(url, mapper.bulkMapToCommitFromShell(parser.parseToJson(stdout)))
     } catch (e) {
-        console.log(e.code + ': ' + e.message + '\n' + 'Somenthig went wrong while logging commit list...')
+        console.log(e.code + ': ' + e.message + '\n' + 'Something went wrong while logging commit list...')
     } finally {
         rmDir(`${process.cwd()}`)
     }
