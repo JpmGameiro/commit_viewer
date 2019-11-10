@@ -24,4 +24,20 @@ function getAndPrintCommitList(key) {
     return commits
 }
 
-module.exports = {getAndPrintCommitList, saveAndPrintCommitList, hasCommitList}
+function cacheSize() {
+    return cache.count()
+}
+
+function clearCache() {
+    cache.clear()
+}
+
+module.exports = {
+    getCommitList,
+    getAndPrintCommitList,
+    saveCommitList,
+    saveAndPrintCommitList,
+    hasCommitList,
+    cacheSize,
+    clearCache
+}

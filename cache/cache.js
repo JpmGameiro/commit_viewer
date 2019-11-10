@@ -18,6 +18,10 @@ class Cache {
         return this.cache.size
     }
 
+    clear() {
+        this.cache.clear()
+    }
+
 }
 
 module.exports = Cache
