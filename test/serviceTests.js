@@ -5,7 +5,6 @@ const assert = require('assert')
 
 const remoteService = require('../service/remoteService')
 const cacheService = require('../service/cacheService')
-const shellService = require('../service/shellService')
 
 describe('Test Class for Commit Viewer App', () => {
 

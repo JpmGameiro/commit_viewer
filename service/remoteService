@@ -7,7 +7,7 @@ let axiosInstance
 
 function initializeAxios() {
     axiosInstance = axiosInstance !== undefined ? axiosInstance : axios.create({
-        timeout: 5000
+        timeout: 10
     })
 }
 
