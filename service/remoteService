@@ -1,0 +1,29 @@
+const axios = require('axios')
+const mapper = require('../domain/mapper')
+
+let axiosInstance
+
+function initializeAxios() {
+    axiosInstance = axiosInstance !== undefined ? axiosInstance : axios.create({
+        timeout: 100
+    })
+}
+
+async function getCommitList(owner, projectName) {
+    initializeAxios()
+    const githubAPI = 'https://api.github.com'
+
+    return await axiosInstance.get(githubAPI + `/repos/${owner}/${projectName}/commits`)//.data
+
+    /*return data.map(
+        elem => mapper.mapToCommit(
+            elem.sha,
+            elem.commit.author.name,
+            elem.commit.author.email,
+            elem.commit.author.date,
+            elem.commit.message
+        )
+    )*/
+}
+
+module.exports.getCommitList = getCommitList

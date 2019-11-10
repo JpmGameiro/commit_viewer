@@ -1,12 +1,12 @@
 const Commit = require('./model/Commit')
 
-function mapToCommit(json) {
+function mapToCommit(hash, author, author_email, date, message) {
     return new Commit(
-        json.hash,
-        json.author,
-        json.author_email,
-        json.date,
-        json.message
+        hash,
+        author,
+        author_email,
+        date,
+        message
     )
 }
 

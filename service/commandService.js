@@ -1,38 +1,38 @@
 const shellService = require('./shellService')
 const cacheService = require('./cacheService')
+const remoteService = require('./remoteService')
+
 const main = require('../main')
 const parser = require('../domain/parser')
+const mapper = require('../domain/mapper')
 
-function validateArgs(args) {
-
-    /*if (args.length < 3) {
-        console.log('Try again, Github URL was not given!!!')
-    } else {*/
-        delegateTasks(args)
-    //}
+async function validateArgs(args) {
+    const [url, updateCache] = args.split(' ')
+    await delegateTasks(url, updateCache)
 }
 
-function delegateTasks(args) {
+async function delegateTasks(url, updateCache) {
 
-    const githubUrl = args
-    const projectName = githubUrl.split('/')[4]
+    const owner = url.split('/')[3]
+    const projectName = url.split('/')[4]
 
-    if (!cacheService.hasCommitList(githubUrl)) {
-        shellService.clone(githubUrl)
-        shellService.cd(projectName)
-        shellService.gitLog((stdout) => {
+    if (!cacheService.hasCommitList(url) || (cacheService.hasCommitList(url) && updateCache === 'true')) {
+        try {
+            const commits = await remoteService.getCommitList(owner, projectName)
+            commits.forEach(elem => console.log(elem))
+            cacheService.saveCommitList(githubUrl, commits)
+
+        } catch (e) {
+            console.log('Error API')
+            shellService.clone(githubUrl)
+            shellService.cd(projectName)
+            const stdout = await shellService.gitLog()
             cacheService.saveCommitList(githubUrl, parser.parseToJson(stdout))
-        })
-        shellService.rmDir(`${process.cwd()}`)
-        main.runApp()
-    } else if (cacheService.hasCommitList(githubUrl) && (updateCommitHistory === undefined || updateCommitHistory === 'false')) {
-        console.log(cacheService.getCommitList(githubUrl))
+            shellService.rmDir(`${process.cwd()}`)
+            //todo passar troço para shellservice e print
+        }
     } else {
-        shellService.cd(projectName)
-        shellService.pull()
-        shellService.gitLog((stdout) => {
-            cacheService.saveCommitList(githubUrl, parser.parseToJson(stdout))
-        })
+        cacheService.getCommitList(githubUrl).forEach(elem => console.log(elem))
     }
 }
 

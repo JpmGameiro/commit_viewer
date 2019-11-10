@@ -2,7 +2,7 @@ const Cache = require('../cache/cache')
 const cache = new Cache()
 
 function getCommitList(githubUrl) {
-    return cache.get()
+    return cache.get(githubUrl)
 }
 
 function saveCommitList(key, value) {

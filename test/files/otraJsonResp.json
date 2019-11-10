@@ -1,0 +1,154 @@
+[
+  {
+    "sha": "042b07d4f91ed67f976a137411fa83d865537c8c",
+    "node_id": "MDY6Q29tbWl0MjAxODM0NDgzOjA0MmIwN2Q0ZjkxZWQ2N2Y5NzZhMTM3NDExZmE4M2Q4NjU1MzdjOGM=",
+    "commit": {
+      "author": {
+        "name": "JpmGameiro",
+        "email": "joaogameiro25@gmail.com",
+        "date": "2019-08-12T01:17:32Z"
+      },
+      "committer": {
+        "name": "JpmGameiro",
+        "email": "joaogameiro25@gmail.com",
+        "date": "2019-08-12T01:17:32Z"
+      },
+      "message": "Deleting my personal api key",
+      "tree": {
+        "sha": "f89ddb3dcae8880c32af61cd1e703927d392c43c",
+        "url": "https://api.github.com/repos/JpmGameiro/OTRA/git/trees/f89ddb3dcae8880c32af61cd1e703927d392c43c"
+      },
+      "url": "https://api.github.com/repos/JpmGameiro/OTRA/git/commits/042b07d4f91ed67f976a137411fa83d865537c8c",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/JpmGameiro/OTRA/commits/042b07d4f91ed67f976a137411fa83d865537c8c",
+    "html_url": "https://github.com/JpmGameiro/OTRA/commit/042b07d4f91ed67f976a137411fa83d865537c8c",
+    "comments_url": "https://api.github.com/repos/JpmGameiro/OTRA/commits/042b07d4f91ed67f976a137411fa83d865537c8c/comments",
+    "author": {
+      "login": "JpmGameiro",
+      "id": 22663229,
+      "node_id": "MDQ6VXNlcjIyNjYzMjI5",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22663229?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/JpmGameiro",
+      "html_url": "https://github.com/JpmGameiro",
+      "followers_url": "https://api.github.com/users/JpmGameiro/followers",
+      "following_url": "https://api.github.com/users/JpmGameiro/following{/other_user}",
+      "gists_url": "https://api.github.com/users/JpmGameiro/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/JpmGameiro/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/JpmGameiro/subscriptions",
+      "organizations_url": "https://api.github.com/users/JpmGameiro/orgs",
+      "repos_url": "https://api.github.com/users/JpmGameiro/repos",
+      "events_url": "https://api.github.com/users/JpmGameiro/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/JpmGameiro/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "JpmGameiro",
+      "id": 22663229,
+      "node_id": "MDQ6VXNlcjIyNjYzMjI5",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22663229?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/JpmGameiro",
+      "html_url": "https://github.com/JpmGameiro",
+      "followers_url": "https://api.github.com/users/JpmGameiro/followers",
+      "following_url": "https://api.github.com/users/JpmGameiro/following{/other_user}",
+      "gists_url": "https://api.github.com/users/JpmGameiro/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/JpmGameiro/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/JpmGameiro/subscriptions",
+      "organizations_url": "https://api.github.com/users/JpmGameiro/orgs",
+      "repos_url": "https://api.github.com/users/JpmGameiro/repos",
+      "events_url": "https://api.github.com/users/JpmGameiro/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/JpmGameiro/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": [
+      {
+        "sha": "747c0ab3cca6b75e5bf1536da71c73b154859394",
+        "url": "https://api.github.com/repos/JpmGameiro/OTRA/commits/747c0ab3cca6b75e5bf1536da71c73b154859394",
+        "html_url": "https://github.com/JpmGameiro/OTRA/commit/747c0ab3cca6b75e5bf1536da71c73b154859394"
+      }
+    ]
+  },
+  {
+    "sha": "747c0ab3cca6b75e5bf1536da71c73b154859394",
+    "node_id": "MDY6Q29tbWl0MjAxODM0NDgzOjc0N2MwYWIzY2NhNmI3NWU1YmYxNTM2ZGE3MWM3M2IxNTQ4NTkzOTQ=",
+    "commit": {
+      "author": {
+        "name": "JpmGameiro",
+        "email": "joaogameiro25@gmail.com",
+        "date": "2019-08-12T01:14:45Z"
+      },
+      "committer": {
+        "name": "JpmGameiro",
+        "email": "joaogameiro25@gmail.com",
+        "date": "2019-08-12T01:14:45Z"
+      },
+      "message": "OTRA for Internet Programming course",
+      "tree": {
+        "sha": "e939bd23c9988dc907ce9c6739a772a906756432",
+        "url": "https://api.github.com/repos/JpmGameiro/OTRA/git/trees/e939bd23c9988dc907ce9c6739a772a906756432"
+      },
+      "url": "https://api.github.com/repos/JpmGameiro/OTRA/git/commits/747c0ab3cca6b75e5bf1536da71c73b154859394",
+      "comment_count": 0,
+      "verification": {
+        "verified": false,
+        "reason": "unsigned",
+        "signature": null,
+        "payload": null
+      }
+    },
+    "url": "https://api.github.com/repos/JpmGameiro/OTRA/commits/747c0ab3cca6b75e5bf1536da71c73b154859394",
+    "html_url": "https://github.com/JpmGameiro/OTRA/commit/747c0ab3cca6b75e5bf1536da71c73b154859394",
+    "comments_url": "https://api.github.com/repos/JpmGameiro/OTRA/commits/747c0ab3cca6b75e5bf1536da71c73b154859394/comments",
+    "author": {
+      "login": "JpmGameiro",
+      "id": 22663229,
+      "node_id": "MDQ6VXNlcjIyNjYzMjI5",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22663229?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/JpmGameiro",
+      "html_url": "https://github.com/JpmGameiro",
+      "followers_url": "https://api.github.com/users/JpmGameiro/followers",
+      "following_url": "https://api.github.com/users/JpmGameiro/following{/other_user}",
+      "gists_url": "https://api.github.com/users/JpmGameiro/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/JpmGameiro/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/JpmGameiro/subscriptions",
+      "organizations_url": "https://api.github.com/users/JpmGameiro/orgs",
+      "repos_url": "https://api.github.com/users/JpmGameiro/repos",
+      "events_url": "https://api.github.com/users/JpmGameiro/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/JpmGameiro/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "committer": {
+      "login": "JpmGameiro",
+      "id": 22663229,
+      "node_id": "MDQ6VXNlcjIyNjYzMjI5",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22663229?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/JpmGameiro",
+      "html_url": "https://github.com/JpmGameiro",
+      "followers_url": "https://api.github.com/users/JpmGameiro/followers",
+      "following_url": "https://api.github.com/users/JpmGameiro/following{/other_user}",
+      "gists_url": "https://api.github.com/users/JpmGameiro/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/JpmGameiro/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/JpmGameiro/subscriptions",
+      "organizations_url": "https://api.github.com/users/JpmGameiro/orgs",
+      "repos_url": "https://api.github.com/users/JpmGameiro/repos",
+      "events_url": "https://api.github.com/users/JpmGameiro/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/JpmGameiro/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "parents": []
+  }
+]

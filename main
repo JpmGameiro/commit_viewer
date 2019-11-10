@@ -1,19 +1,20 @@
 const commandService = require('./service/commandService')
 const readline = require('readline');
 
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
 function runApp() {
-    const rl = readline.createInterface({
-        input: process.stdin,
-        output: process.stdout
-    });
-    rl.on('line', (line) => {
-        commandService.validateArgs(line)
+    rl.question('Provide us the GitHub Url...\n', async (input) => {
+        if(input === 'exit') {
+            rl.close()
+            process.exit()
+        }
+        await commandService.validateArgs(input)
+        runApp()
     })
-
-    //'Provide us the GitHub URL and we\'ll do the rest for you! \n')
-    //console.log(`Getting ${url} Commit List...`)
-
-
 }
 
 module.exports.runApp = runApp
