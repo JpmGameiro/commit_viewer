@@ -24,8 +24,8 @@ function listCommands() {
     console.log(
         'List of commands available:\n' +
         '[-help] - Lists all the available commands.\n' +
-        '[Github URL] - Lists the commits for the GitHub URL provided.\n' +
-        '[Github URL] [nocache] - Lists the commits for the GitHub URL provided, ignoring cached values.\n' +
+        '[Github URL] - Lists the commits for the provided GitHub URL.\n' +
+        '[Github URL] [nocache] - Lists the commits for the provided GitHub URL, ignoring cached values.\n' +
         '[exit] - Ends Application\n'
     )
 }

@@ -7,7 +7,7 @@ const rl = readline.createInterface({
 })
 
 function runApp() {
-    rl.question('Provide us a valid GitHub Url...\n', async (args) => {
+    rl.question('Provide us a valid GitHub Url or type -help...\n', async (args) => {
         await commandService.validateArgs(args)
         runApp()
     })
