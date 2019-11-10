@@ -3,9 +3,7 @@ const mapper = require('./mapper')
 function parseToJson(stdout) {
     let commits = stdout.split('\n')
     commits.pop()
-    return JSON.parse(`[${commits.join(',')}]`).map(
-        commit => mapper.mapToCommit(commit.hash, commit.author, commit.author_email, commit.date, commit.message)
-    )
+    return JSON.parse(`[${commits.join(',')}]`)
 }
 
 module.exports.parseToJson = parseToJson

@@ -10,4 +10,24 @@ function mapToCommit(hash, author, author_email, date, message) {
     )
 }
 
-module.exports.mapToCommit = mapToCommit
+function bulkMapToCommitFromAPI(commits) {
+    return commits.map(elem => mapToCommit(
+        elem.sha,
+        elem.commit.author.name,
+        elem.commit.author.email,
+        elem.commit.author.date,
+        elem.commit.message
+    ))
+}
+
+function bulkMapToCommitFromShell(commits) {
+    return commits.map(commit => mapToCommit(
+        commit.hash,
+        commit.author,
+        commit.author_email,
+        commit.date,
+        commit.message
+    ))
+}
+
+module.exports = {bulkMapToCommitFromAPI, bulkMapToCommitFromShell}

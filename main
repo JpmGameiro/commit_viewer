@@ -7,12 +7,8 @@ const rl = readline.createInterface({
 })
 
 function runApp() {
-    rl.question('Provide us the GitHub Url...\n', async (input) => {
-        if(input === 'exit') {
-            rl.close()
-            process.exit()
-        }
-        await commandService.validateArgs(input)
+    rl.question('Provide us a valid GitHub Url...\n', async (args) => {
+        await commandService.validateArgs(args)
         runApp()
     })
 }

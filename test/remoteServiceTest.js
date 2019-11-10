@@ -14,7 +14,7 @@ describe('Remote Service Tests', () => {
             .reply(200, JSON.parse(jsonFile))
         
         try {
-            const result = await remoteService.getCommitList(owner, repo)
+            const result = await remoteService.retrieveCommitListFromAPI(owner, repo)
             assert.deepEqual(res.interceptors[0].body, JSON.stringify(result.data))
         } catch (error) {
             console.error(error)

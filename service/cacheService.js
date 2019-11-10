@@ -13,4 +13,15 @@ function hasCommitList(key) {
     return cache.has(key)
 }
 
-module.exports = {getCommitList, saveCommitList, hasCommitList}
+function saveAndPrintCommitList(key, value) {
+    value.forEach((elem) => console.log(elem))
+    saveCommitList(key, value)
+}
+
+function getAndPrintCommitList(key) {
+    const commits = getCommitList(key)
+    commits.forEach(elem => console.log(elem))
+    return commits
+}
+
+module.exports = {getAndPrintCommitList, saveAndPrintCommitList, hasCommitList}

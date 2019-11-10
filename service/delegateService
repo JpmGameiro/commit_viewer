@@ -1,0 +1,25 @@
+const shellService = require('./shellService')
+const cacheService = require('./cacheService')
+const remoteService = require('./remoteService')
+
+async function delegateTasks(url, owner, repo, nocache) {
+
+    if (!cacheService.hasCommitList(url) || (cacheService.hasCommitList(url) && nocache === 'nocache')) {
+        try {
+            await remoteService.getCommitList(url, owner, repo)
+        } catch (e) {
+            if (e.response !== undefined && e.response.status === 404) {
+                console.log(
+                    e.response.status + '-' + e.response.statusText + ': ' + e.message + '\n' +
+                    'Make sure the Owner and the Repository do exist!\n'
+                )
+            } else {
+                await shellService.log(url, repo)
+            }
+        }
+    } else {
+        cacheService.getAndPrintCommitList(url)
+    }
+}
+
+module.exports.delegateTasks = delegateTasks
