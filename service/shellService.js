@@ -1,5 +1,8 @@
 const shell = require('shelljs')
+
 const cacheService = require('./cacheService')
+const mapper = require('../domain/mapper')
+const parser = require('../domain/parser')
 
 function clone(githubUrl) {
     if (shell.exec(`git clone ${githubUrl}`, {silent: true}).code !== 0) {
@@ -26,6 +29,8 @@ async function log(url, repo) {
         cacheService.saveAndPrintCommitList(url, mapper.bulkMapToCommitFromShell(parser.parseToJson(stdout)))
     } catch (e) {
         console.log(e.code + ': ' + e.message + '\n' + 'Somenthig went wrong while logging commit list...')
+    } finally {
+        rmDir(`${process.cwd()}`)
     }
 }
 
@@ -38,7 +43,6 @@ function gitLog() {
             if (code !== 0) {
                 reject({code: code, message: stderr})
             } else {
-                rmDir(`${process.cwd()}`)
                 resolve(stdout)
             }
         })
