@@ -6,7 +6,7 @@ const mapper = require('../domain/mapper')
 let axiosInstance
 
 /**
- * Instanciation of axios
+ * Instantiation of axios
  */
 function initializeAxios() {
     axiosInstance = axiosInstance !== undefined ? axiosInstance : axios.create({
