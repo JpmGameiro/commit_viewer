@@ -5,13 +5,23 @@ const mapper = require('../domain/mapper')
 const parser = require('../domain/parser')
 
 /**
+ * Executes shell's exec function with provided command
+ * @param command
+ * @returns {code, stdout, stderr}
+ */
+function callShellExec(command) {
+    return shell.exec(command, {silent: true})
+}
+
+/**
  * Git clone command equivalent.
  * Clones a valid GitHub repository, given the GitHub URL.
  * @param githubUrl
  */
 function clone(githubUrl) {
-    if (shell.exec(`git clone ${githubUrl}`, {silent: true}).code !== 0) {
-        console.log('Something went wrong while cloning...')
+    const cloned = callShellExec(`git clone ${githubUrl}`)
+    if (cloned.code !== 0) {
+        throw {code: cloned.code, message: cloned.stderr}
     }
 }
 
@@ -21,7 +31,10 @@ function clone(githubUrl) {
  * @param projectName
  */
 function cd(projectName) {
-    shell.cd(projectName)
+    const cd = shell.cd(projectName)
+    if (cd.code !== 0) {
+        throw {code: cd.code, message: cd.stderr}
+    }
 }
 
 /**
@@ -31,8 +44,9 @@ function cd(projectName) {
  */
 function rmDir(dir) {
     cd('..')
-    if (shell.exec(`rmdir /Q /S ${dir}`).code !== 0) {
-        console.log('Something went wrong while deleting directory...')
+    const rm = callShellExec(`rmdir /Q /S ${dir}`)
+    if (rm.code !== 0) {
+        throw {code: rm.code, message: rm.stderr}
     }
 }
 
@@ -44,15 +58,14 @@ function rmDir(dir) {
  * @returns {Promise<void>}
  */
 async function log(url, repo) {
-    clone(url)
-    cd(repo)
     try {
+        clone(url)
+        cd(repo)
         const stdout = await gitLog()
+        rmDir(`${process.cwd()}`)
         cacheService.saveAndPrintCommitList(url, mapper.bulkMapToCommitFromShell(parser.parseToJson(stdout)))
     } catch (e) {
-        console.log(e.code + ': ' + e.message + '\n' + 'Something went wrong while logging commit list...')
-    } finally {
-        rmDir(`${process.cwd()}`)
+        console.log(e.code + ': ' + e.message + '\n')
     }
 }
 
@@ -65,14 +78,13 @@ function gitLog() {
     return new Promise((resolve, reject) => {
         const properties = '{\\"hash\\":\\"%H\\",\\"author\\":\\"%aN\\",\\"author_email\\":\\"%aE\\",\\"date\\":\\"%ad\\",\\"message\\":\\"%f\\"}'
         const logCommand = 'git log --pretty=' + properties
-        shell.exec(logCommand, {silent: true}, function (code, stdout, stderr) {
-            if (code !== 0) {
-                reject({code: code, message: stderr})
-            } else {
-                resolve(stdout)
-            }
-        })
+        const res = callShellExec(logCommand)
+        if (res.code !== 0) {
+            reject({code: res.code, message: res.stderr})
+        } else {
+            resolve(res.stdout)
+        }
     })
 }
 
-module.exports.log = log
+module.exports = {log}
