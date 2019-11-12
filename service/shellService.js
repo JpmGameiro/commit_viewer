@@ -22,7 +22,7 @@ function clone(githubUrl) {
     const cloned = callShellExec(`git clone ${githubUrl}`)
     if (cloned.code !== 0) {
         throw {code: cloned.code, message: cloned.stderr}
-    }
+    } else return cloned
 }
 
 /**
@@ -34,7 +34,7 @@ function cd(projectName) {
     const cd = shell.cd(projectName)
     if (cd.code !== 0) {
         throw {code: cd.code, message: cd.stderr}
-    }
+    } else return cd
 }
 
 /**
@@ -47,7 +47,7 @@ function rmDir(dir) {
     const rm = callShellExec(`rmdir /Q /S ${dir}`)
     if (rm.code !== 0) {
         throw {code: rm.code, message: rm.stderr}
-    }
+    } else return rm
 }
 
 /**
@@ -87,4 +87,4 @@ function gitLog() {
     })
 }
 
-module.exports = {log}
+module.exports = {log, clone, cd, rmDir, log, gitLog}
